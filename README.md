@@ -2,6 +2,8 @@
 
 A 1-on-1 blackjack game library for simulating games, usable for any blackjack needs.
 
+View [here](https://pypi.org/project/blackjack-api/) on PyPI.
+
 ## Actual Library
 
 ### blackjack.py
