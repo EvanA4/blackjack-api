@@ -8,7 +8,7 @@ class Deck:
     __deck: list[Card]
     __num_decks: int
     
-    def reset(self, exclude: set[Card] = {}) -> None:
+    def reset(self, exclude: dict[Card, int] = {}) -> None:
         '''
         Will refill the deck with `num_decks` number of decks
 
@@ -19,7 +19,9 @@ class Deck:
             for suit in self.__SUITS:
                 for value in self.__VALUES:
                     card = Card(value + suit)
-                    if card not in exclude:
+                    if card in exclude and exclude[card] > 0:
+                        exclude[card] -= 1
+                    else:
                         self.__deck.append(Card(value + suit))
 
     def __init__(self, num_decks = 1) -> None:

@@ -8,7 +8,9 @@ View [here](https://pypi.org/project/blackjack-api/) on PyPI.
 
 ### blackjack.py
 
-The BlackJack class constructor takes three optional parameters:
+The BlackJack class constructor takes several optional 
+parameters:
+- The number of decks to use
 - The win ratio
 - Whether the dealer hits on a soft 17
 - Whether to use the 5-Card Charlie rule
@@ -71,10 +73,6 @@ The Card class is much simpler and has three values:
 The BlackJack class also uses a couple Deck objects to keep track of the deck
 and discard pile. Whenever the deck empties, the discard pile will be used to
 refill the deck.
-
-> [!NOTE]
-> The BlackJack object only uses one deck to give as much advantage to the player
-> as possible.
 
 ## Tests
 

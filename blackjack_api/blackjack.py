@@ -10,6 +10,7 @@ class BlackJack:
 
     # user preferences
 
+    num_decks: int
     win_ratio: float
     hit_soft_17: bool
     charlie: bool
@@ -22,7 +23,7 @@ class BlackJack:
     dealer: Hand
     deck: Deck
     discard: Deck
-    active_cards: set[Card]
+    active_cards: dict[Card, int]
     hilo: float
 
     # hand dependent variables
@@ -37,19 +38,20 @@ class BlackJack:
 
     # constructor
 
-    def __init__(self, win_ratio = 1.5, hit_soft_17 = True, charlie = True) -> None:
+    def __init__(self, num_decks = 1, win_ratio = 1.5, hit_soft_17 = True, charlie = True) -> None:
         '''Automatically starts first round and hand'''
+        self.num_decks = num_decks
         self.win_ratio = win_ratio
         self.hit_soft_17 = hit_soft_17
-
         self.charlie = charlie
+
         self.hand_running = False
         self.round_running = False
         self.dealer = Hand()
         self.player = Player()
-        self.deck = Deck()
+        self.deck = Deck(num_decks)
         self.discard = Deck(0)
-        self.active_cards = set()
+        self.active_cards = {}
         self.hilo = 0
 
         self.start_round()
@@ -61,7 +63,13 @@ class BlackJack:
     def __get_card(self) -> Card:
         '''Gets card from deck, reshuffles if necessary, and updates HiLo'''
         card = self.deck.deal()
-        self.active_cards.add(card)
+
+        # add card to active cards
+        if card not in self.active_cards:
+            self.active_cards[card] = 1
+        else:
+            self.active_cards[card] += 1
+
         if len(self.deck) == 0:
             self.deck.reset(self.active_cards)
             self.discard.reset()
@@ -85,6 +93,7 @@ class BlackJack:
         if self.round_running or self.hand_running:
             raise RuntimeError("Can only manually reset deck outside of any round.")
         self.deck.reset(self.active_cards)
+        self.active_cards.clear()
         self.discard.reset()
         self.hilo = 0
 

@@ -6,13 +6,15 @@ class CLI:
     debug: bool
 
 
-    def __init__(self, debug = False):
-        self.blackjack = BlackJack()
+    def __init__(self,  num_decks = 1, win_ratio = 1.5, hit_soft_17 = True, charlie = True, debug = False):
+        self.blackjack = BlackJack(num_decks, win_ratio, hit_soft_17, charlie)
         self.debug = debug
 
 
     def handle_cmd(self, args: list[str]) -> bool:
         '''Returns whether command was requested in valid context'''
+        if args == []:
+            return False
         if args[0] == "insurance":
             if not self.blackjack.can_insurance:
                 print("You can only play insurance at first glance when dealer shows an ace.")
