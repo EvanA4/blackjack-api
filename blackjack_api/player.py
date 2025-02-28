@@ -1,5 +1,5 @@
-from py_jack.card import Card
-from py_jack.hand import Hand
+from blackjack_api.card import Card
+from blackjack_api.hand import Hand
 
 class Player:
     '''Player helper class for blackjack game loop'''

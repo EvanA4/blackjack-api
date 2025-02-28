@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "py-jack"
+name = "blackjack-api"
 version = "1.0.0"
 authors = [
   { name="Evan Abbott", email="evanabbott04@gmail.com" },

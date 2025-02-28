@@ -1,4 +1,4 @@
-from py_jack.card import Card
+from blackjack_api.card import Card
 import random
 
 class Deck:

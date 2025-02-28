@@ -1,7 +1,7 @@
-from py_jack.deck import Deck
-from py_jack.player import Player
-from py_jack.card import Card
-from py_jack.hand import Hand
+from blackjack_api.deck import Deck
+from blackjack_api.player import Player
+from blackjack_api.card import Card
+from blackjack_api.hand import Hand
 
 
 class BlackJack:

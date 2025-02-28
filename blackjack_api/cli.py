@@ -1,4 +1,4 @@
-from py_jack.blackjack import BlackJack
+from blackjack_api.blackjack import BlackJack
 
 
 class CLI:

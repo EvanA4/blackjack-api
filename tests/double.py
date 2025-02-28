@@ -3,7 +3,7 @@ import sys
 script_dir = os.path.dirname(__file__)
 parent_dir = os.path.dirname(script_dir)
 sys.path.insert(0, parent_dir)
-from py_jack.blackjack import BlackJack
+from blackjack_api.blackjack import BlackJack
 from sys import argv
 
 
